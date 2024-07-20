@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section id="landing">
+      <nav>
+        <div class="nav__container">
+          <img
+            class="logo"
+            src="./assets/movie center.png"
+            alt="Movie Center"
+          />
+          <ul class="nav__links">
+            <li><a class="nav__link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <header>
+        <div class="header__container">
+          <div class="header__description">
+            <h1>Find all your favorite movies at Movie Center</h1>
+            <div class="search__box">
+              <input type="text" class="search__bar" id="Input" />
+              <button class="search__btn" type="submit">Search</button>
+              <select id="filter" onchange="filterMovies(event)">
+                <option value="" disabled selected>Sort By</option>
+                <option value="ALPHABETICAL">A-Z</option>
+                <option value="RATING">Rating</option>
+                <option value="RELEASE_DATE">Release date</option>
+                <option value="RUNTIME">Runtime</option>
+              </select>
+            </div>
+          </div>
+          <div class="movies__container">
+            <div class="movies__list"></div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
