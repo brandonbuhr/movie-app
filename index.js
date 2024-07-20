@@ -4,8 +4,21 @@ let searchInput = document.getElementById("Input");
 
 document.querySelector("button").addEventListener("click", searchMovies);
 
+searchInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    searchMovies();
+  }
+});
+
 async function searchMovies(filter) {
   let movies = [];
+
+  let loadingElement = document.getElementById("loading");
+  let moviesListElement = document.querySelector(".movies__list");
+
+  loadingElement.style.display = "block";
+
+  moviesListElement.innerHTML = "";
 
   let query = searchInput.value || "all";
   const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`;
@@ -56,6 +69,7 @@ async function searchMovies(filter) {
       ".movies__list"
     ).innerHTML = `<h3>${data.Error}</h3>`;
   }
+  loadingElement.style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", () => {

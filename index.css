@@ -74,6 +74,8 @@ h3 {
   width: 100%;
   border-radius: 24px;
   height: 100%;
+  font-size: 20px;
+  padding: 8px;
 }
 .search__btn {
   font-size: 24px;
@@ -121,4 +123,23 @@ MOVIE DISPLAY
 }
 .movie__year {
   font-size: 24px;
+}
+
+/*
+
+SPINNER
+
+*/
+
+.fa-spinner {
+  animation: rotate 600ms infinite linear;
+  font-size: 60px;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
