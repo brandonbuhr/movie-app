@@ -49,6 +49,9 @@ h3 {
   font-weight: bold;
   padding: 8px;
 }
+.nav__link:hover {
+  cursor: not-allowed;
+}
 .logo {
   width: 160px;
 }
@@ -66,7 +69,7 @@ h3 {
 .search__box {
   display: flex;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   height: 40px;
   margin-top: 24px;
 }
@@ -80,12 +83,20 @@ h3 {
 .search__btn {
   font-size: 24px;
   font-weight: bold;
-  width: 150px;
+  width: 170px;
   border-radius: 24px;
   margin-left: 12px;
-  margin-right: 36px;
+  margin-right: 12px;
 }
 .search__btn:hover {
+  cursor: pointer;
+}
+.sort {
+  border-radius: 24px;
+  font-size: 20px;
+  text-align: center;
+}
+.sort:hover {
   cursor: pointer;
 }
 /*

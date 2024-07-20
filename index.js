@@ -1,9 +1,9 @@
 const apiKey = "f4cc1001";
-
+// get input from search bar
 let searchInput = document.getElementById("Input");
-
+// activate searchMovies when Search button is clicked
 document.querySelector("button").addEventListener("click", searchMovies);
-
+// activate searchMovies when Enter key is pressed
 searchInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     searchMovies();
@@ -15,18 +15,22 @@ async function searchMovies(filter) {
 
   let loadingElement = document.getElementById("loading");
   let moviesListElement = document.querySelector(".movies__list");
-
+  // display loading as a block element
   loadingElement.style.display = "block";
 
   moviesListElement.innerHTML = "";
-
+  // default search term is "all" until user enters something else
   let query = searchInput.value || "all";
+  // establish API source
   const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`;
+  // retrieve data from url
   const res = await fetch(url);
+  // parse response as JSON
   const data = await res.json();
   console.log(data);
-
+  // check if API response is successful
   if (data.Response === "True") {
+    //wait for Promise to finish, then return movieData using imdbID
     movies = await Promise.all(
       data.Search.map(async (movie) => {
         const url = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`;
@@ -35,7 +39,7 @@ async function searchMovies(filter) {
         return movieData;
       })
     );
-
+    // filter results
     if (filter === "RATING") {
       movies.sort((a, b) => b.imdbRating - a.imdbRating);
     } else if (filter === "RELEASE_DATE") {
@@ -45,7 +49,7 @@ async function searchMovies(filter) {
     } else if (filter === "ALPHABETICAL") {
       movies.sort((a, b) => a.Title.localeCompare(b.Title));
     }
-
+    // map data into new array
     const movieHtml = movies
       .map(
         (movie) => `
@@ -71,11 +75,11 @@ async function searchMovies(filter) {
   }
   loadingElement.style.display = "none";
 }
-
+// wait for all content to load before calling searchMovies
 document.addEventListener("DOMContentLoaded", () => {
   searchMovies();
 });
-
+// filter function
 function filterMovies(event) {
   searchMovies(event.target.value);
 }
