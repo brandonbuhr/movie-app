@@ -154,3 +154,9 @@ SPINNER
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 800px) {
+  .movie {
+    width: 100%;
+  }
+}
